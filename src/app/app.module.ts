@@ -18,7 +18,10 @@ import {AuthGuard} from '../../../mon-projet-angular/src/app/services/auth-guard
 
 const appRoutes: Routes = [
   { path: 'books', component: BookListComponent },
-  { path: 'edit', component: BookFormComponent},
+  { path: 'books/edit', component: BookFormComponent},
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
+  { path: 'books/view/:id', component: SingleBookComponent },
   { path: '', component: BookListComponent},
 ];
 

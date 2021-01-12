@@ -14,15 +14,8 @@ export class BooksService {
     this.bookSubject.next(this.books.slice());
   }
 
-  addBook(title: string, author: string) {
-    const bookObject = {
-      title: '',
-      author: '',
-    };
-    bookObject.title = title;
-    bookObject.author = author;
-    // todo bookObject.picture = picture;
-    this.books.push(bookObject);
+  addBook(book: Book) {
+    this.books.push(book);
     this.emitBookSubject();
   }
 }
