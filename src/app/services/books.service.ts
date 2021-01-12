@@ -1,9 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Book} from '../models/book.model';
+import { Subject} from 'rxjs';
+import {User} from '../../../../mon-projet-angular/src/app/models/User.model';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class BooksService {
 
-  constructor() { }
+  private books: Book[] =  [
+    new Book ('Pride & Prejudice', 'Jane Austeen')
+  ];
+
+  bookSubject = new Subject <Book[]>();
+
+  emitBookSubject() {
+    this.bookSubject.next(this.books.slice());
+  }
+
+  addBook(title: string, author: string) {
+    const bookObject = {
+      title: '',
+      author: '',
+    };
+    bookObject.title = title;
+    bookObject.author = author;
+    // todo bookObject.picture = picture;
+    this.books.push(bookObject);
+    this.emitBookSubject();
+  }
 }

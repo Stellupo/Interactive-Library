@@ -13,6 +13,14 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {AuthService} from './services/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from '../../../mon-projet-angular/src/app/services/auth-guard.service';
+
+const appRoutes: Routes = [
+  { path: 'books', component: BookListComponent },
+  { path: 'edit', component: BookFormComponent},
+  { path: '', component: BookListComponent},
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +36,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+    RouterModule
   ],
   providers: [AuthService, BooksService, AuthGuardService],
   bootstrap: [AppComponent]
