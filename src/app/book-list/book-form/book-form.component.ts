@@ -25,6 +25,7 @@ export class BookFormComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
+      synopsis: '',
     });
   }
 
@@ -33,9 +34,10 @@ export class BookFormComponent implements OnInit {
     const newBook = new Book(
       formValue.title,
       formValue.author,
-    )
+    );
+    newBook.synopsis = formValue.synopsis;
     //todo picture  formValue.picture ?
-    this.bookService.addBook(newBook);
+    this.bookService.createNewBook(newBook)
     this.router.navigate(['/books']);  // navigate to the page listing all the books after adding the new book
   }
 

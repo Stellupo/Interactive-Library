@@ -1,10 +1,21 @@
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let book of books">
-    <h3>{{ book.title }}</h3>
-    <!--<p *ngIf="book.picture">
-      <img src="{{ book.picture }}"> todo
-    </p>!-->
-    <h4> Written by {{ book.author }}</h4>
-  </li>
-</ul>
-<button class="btn btn-primary"><a routerLink="edit">Add a book</a></button>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Your books</h2>
+    <button
+      class="list-group-item"
+      *ngFor="let book of books; let i = index"
+      (click)="onViewBook(i)">
+        <h3 class="list-group-item-heading">
+          {{ book.title }}
+          <button class="btn btn-default pull-right" (click)="onDeleteBook(book)">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+        </h3>
+      <!--<p *ngIf="book.picture">
+        <img src="{{ book.picture }}"> todo
+      </p>!-->
+        <p class="list-group-item-text">Written by {{ book.author }}</p>
+    </button>
+  <button class="btn btn-primary" (click)="onNewBook()">Add a book</button>
+  </div>
+</div>
