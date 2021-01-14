@@ -15,13 +15,14 @@ export class AuthGuardService implements CanActivate{
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return new Promise((resolve, reject) => {
+    return new Promise(
+      (resolve, reject) => {
       firebase.auth().onAuthStateChanged(
         (user) => {
           if (user) {
             resolve(true);
           } else {
-            this.router.navigate(['/auth']);
+            this.router.navigate(['/auth', 'signin']);
             resolve(false);
           }
         });

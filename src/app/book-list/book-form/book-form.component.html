@@ -29,7 +29,7 @@
                class="form-control" accept="image/*">
         <p class="text-success" *ngIf="fileUploaded">File uploaded!</p>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid">Add</button>
+      <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid || fileIsUploading">Add</button>
       <a id="backButton" routerLink="/books">Back</a>
     </form>
   </div>
